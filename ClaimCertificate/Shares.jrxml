@@ -27,7 +27,7 @@ FROM opentenure.claim_share sh
      ON p.gender_code = gt.code) 
    ON psh.party_id = p.id) 
  ON sh.id = psh.claim_share_id
-WHERE sh.claim_id = $P{claim_id}]]>
+WHERE sh.claim_id = $P{claim_id}  and (sh.status = 'a' or sh.status is null)]]>
 	</queryString>
 	<field name="share_id" class="java.lang.String"/>
 	<field name="nominator" class="java.lang.Integer"/>
@@ -50,7 +50,7 @@ WHERE sh.claim_id = $P{claim_id}]]>
 			<band height="44">
 				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				<textField pattern="">
-					<reportElement x="2" y="3" width="219" height="18" uuid="2d17547d-1e8c-41b9-8f24-79054aebf340"/>
+					<reportElement x="2" y="3" width="228" height="18" uuid="2d17547d-1e8c-41b9-8f24-79054aebf340"/>
 					<textElement>
 						<font fontName="SansSerif" size="14" isBold="true"/>
 					</textElement>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2015-08-07T11:35:59 -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ClaimsSummary" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" resourceBundle="Bundle" uuid="4eedbb89-b4f6-4469-9ab6-f642a1688cf7">
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SOLA_DA"/>
+<!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
+<!-- 2017-09-02T10:43:35 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ClaimsSummary" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" resourceBundle="Bundle" isIgnorePagination="true" uuid="4eedbb89-b4f6-4469-9ab6-f642a1688cf7">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="ireport.jasperserver.url" value="http://localhost:8080/jasperserver/"/>
 	<property name="ireport.jasperserver.user" value="jasperadmin"/>
-	<property name="ireport.jasperserver.report.resource" value="/reports/ClaimsSummary_files/main_jrxml"/>
-	<property name="ireport.jasperserver.reportUnit" value="/reports/ClaimsSummary"/>
+	<property name="ireport.jasperserver.report.resource" value="/reports/community_server/ClaimsSummary_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/reports/community_server/ClaimsSummary"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
@@ -66,84 +66,84 @@
 		<defaultValueExpression><![CDATA["en-us"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select  count(1) as cnt, to_char((now()), 'Mon') || ', ' || date_part('year', now()) as mnth, sum(claim_area/10000) as area, 1 as ord
+		<![CDATA[select  count(1) as cnt, to_char((now()), 'Mon') || ', ' || date_part('year', now()) as mnth, round((sum(claim_area)/10000):: numeric, 4) as area,  1 as ord
 from opentenure.claim
 where lodgement_date is not null and date_part('year', lodgement_date) = date_part('year', now()) and 
 date_part('month', lodgement_date) = date_part('month', now())
 and challenged_claim_id is null
 union 
 select count(1) as cnt, to_char((now()- (interval '1 month')), 'Mon') || ', ' || date_part('year', now() - (interval '1 month')) as mnth, 
-sum(claim_area/10000) as area, 2 as ord
+round((sum(claim_area)/10000):: numeric, 4) as area, 2 as ord
 from opentenure.claim
 where lodgement_date is not null and date_part('year', lodgement_date) = date_part('year', now() - (interval '1 month')) and 
 date_part('month', lodgement_date) = date_part('month', now() - (interval '1 month'))
 and challenged_claim_id is null
 union 
 select count(1) as cnt, to_char((now()- (interval '2 month')), 'Mon') || ', ' || date_part('year', now() - (interval '2 month')) as mnth, 
-sum(claim_area/10000) as area, 3 as ord
+round((sum(claim_area)/10000):: numeric, 4) as area, 3 as ord
 from opentenure.claim
 where lodgement_date is not null and date_part('year', lodgement_date) = date_part('year', now() - (interval '2 month')) and 
 date_part('month', lodgement_date) = date_part('month', now() - (interval '2 month'))
 and challenged_claim_id is null
 union 
 select count(1) as cnt, to_char((now()- (interval '3 month')), 'Mon') || ', ' || date_part('year', now() - (interval '3 month')) as mnth, 
-sum(claim_area/10000) as area, 4 as ord
+round((sum(claim_area)/10000):: numeric, 4) as area, 4 as ord
 from opentenure.claim
 where lodgement_date is not null and date_part('year', lodgement_date) = date_part('year', now() - (interval '3 month')) and 
 date_part('month', lodgement_date) = date_part('month', now() - (interval '3 month'))
 and challenged_claim_id is null
 union 
 select count(1) as cnt, to_char((now()- (interval '4 month')), 'Mon') || ', ' || date_part('year', now() - (interval '4 month')) as mnth, 
-sum(claim_area/10000) as area, 5 as ord
+round((sum(claim_area)/10000):: numeric, 4) as area, 5 as ord
 from opentenure.claim
 where lodgement_date is not null and date_part('year', lodgement_date) = date_part('year', now() - (interval '4 month')) and 
 date_part('month', lodgement_date) = date_part('month', now() - (interval '4 month'))
 and challenged_claim_id is null
 union 
 select count(1) as cnt, to_char((now()- (interval '5 month')), 'Mon') || ', ' || date_part('year', now() - (interval '5 month')) as mnth, 
-sum(claim_area/10000) as area, 6 as ord
+round((sum(claim_area)/10000):: numeric, 4) as area, 6 as ord
 from opentenure.claim
 where lodgement_date is not null and date_part('year', lodgement_date) = date_part('year', now() - (interval '5 month')) and 
 date_part('month', lodgement_date) = date_part('month', now() - (interval '5 month'))
 and challenged_claim_id is null
 union 
 select count(1) as cnt, to_char((now()- (interval '6 month')), 'Mon') || ', ' || date_part('year', now() - (interval '6 month')) as mnth, 
-sum(claim_area/10000) as area, 7 as ord
+round((sum(claim_area)/10000):: numeric, 4) as area, 7 as ord
 from opentenure.claim
 where lodgement_date is not null and date_part('year', lodgement_date) = date_part('year', now() - (interval '6 month')) and 
 date_part('month', lodgement_date) = date_part('month', now() - (interval '6 month'))
 and challenged_claim_id is null
 union 
 select count(1) as cnt, to_char((now()- (interval '7 month')), 'Mon') || ', ' || date_part('year', now() - (interval '7 month')) as mnth, 
-sum(claim_area/10000) as area, 8 as ord
+round((sum(claim_area)/10000):: numeric, 4) as area, 8 as ord
 from opentenure.claim
 where lodgement_date is not null and date_part('year', lodgement_date) = date_part('year', now() - (interval '7 month')) and 
 date_part('month', lodgement_date) = date_part('month', now() - (interval '7 month'))
 and challenged_claim_id is null
 union 
 select count(1) as cnt, to_char((now()- (interval '8 month')), 'Mon') || ', ' || date_part('year', now() - (interval '8 month')) as mnth, 
-sum(claim_area/10000) as area, 9 as ord
+round((sum(claim_area)/10000):: numeric, 4) as area, 9 as ord
 from opentenure.claim
 where lodgement_date is not null and date_part('year', lodgement_date) = date_part('year', now() - (interval '8 month')) and 
 date_part('month', lodgement_date) = date_part('month', now() - (interval '8 month'))
 and challenged_claim_id is null
 union 
 select count(1) as cnt, to_char((now()- (interval '9 month')), 'Mon') || ', ' || date_part('year', now() - (interval '9 month')) as mnth, 
-sum(claim_area/10000) as area, 10 as ord
+round((sum(claim_area)/10000):: numeric, 4) as area, 10 as ord
 from opentenure.claim
 where lodgement_date is not null and date_part('year', lodgement_date) = date_part('year', now() - (interval '9 month')) and 
 date_part('month', lodgement_date) = date_part('month', now() - (interval '9 month'))
 and challenged_claim_id is null
 union 
 select count(1) as cnt, to_char((now()- (interval '10 month')), 'Mon') || ', ' || date_part('year', now() - (interval '10 month')) as mnth, 
-sum(claim_area/10000) as area, 11 as ord
+round((sum(claim_area)/10000):: numeric, 4) as area, 11 as ord
 from opentenure.claim
 where lodgement_date is not null and date_part('year', lodgement_date) = date_part('year', now() - (interval '10 month')) and 
 date_part('month', lodgement_date) = date_part('month', now() - (interval '10 month'))
 and challenged_claim_id is null
 union 
 select count(1) as cnt, to_char((now()- (interval '11 month')), 'Mon') || ', ' || date_part('year', now() - (interval '11 month')) as mnth, 
-sum(claim_area/10000) as area, 12 as ord
+round((sum(claim_area)/10000):: numeric, 4) as area, 12 as ord
 from opentenure.claim
 where lodgement_date is not null and date_part('year', lodgement_date) = date_part('year', now() - (interval '11 month')) and 
 date_part('month', lodgement_date) = date_part('month', now() - (interval '11 month'))
@@ -158,7 +158,7 @@ order by ord]]>
 		<variableExpression><![CDATA[$F{cnt}]]></variableExpression>
 		<initialValueExpression><![CDATA[0]]></initialValueExpression>
 	</variable>
-	<variable name="area" class="java.lang.Integer" calculation="Sum">
+	<variable name="area" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{area}]]></variableExpression>
 	</variable>
 	<title>
@@ -201,7 +201,7 @@ order by ord]]>
 					<bottomPen lineWidth="0.6"/>
 					<rightPen lineWidth="0.6"/>
 				</box>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{count}]]></textFieldExpression>
@@ -227,7 +227,7 @@ order by ord]]>
 					<bottomPen lineWidth="0.6"/>
 					<rightPen lineWidth="0.6"/>
 				</box>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{hectar}]]></textFieldExpression>
@@ -251,27 +251,29 @@ order by ord]]>
 			</textField>
 			<textField>
 				<reportElement x="454" y="0" width="100" height="26" uuid="ff41c4c8-2596-4a55-8112-32b4d27df135"/>
-				<box leftPadding="7">
+				<box leftPadding="7" rightPadding="7">
 					<topPen lineWidth="0.6"/>
 					<leftPen lineWidth="0.6"/>
 					<bottomPen lineWidth="0.6"/>
 					<rightPen lineWidth="0.6"/>
 				</box>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="12"/>
+					<paragraph rightIndent="3" spacingAfter="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cnt}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="330" y="0" width="124" height="26" uuid="f7349058-0d83-4852-937c-d058d4e5d9ea"/>
-				<box leftPadding="7">
+				<box leftPadding="7" rightPadding="7">
 					<topPen lineWidth="0.6"/>
 					<leftPen lineWidth="0.6"/>
 					<bottomPen lineWidth="0.6"/>
 					<rightPen lineWidth="0.6"/>
 				</box>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="12"/>
+					<paragraph rightIndent="3" spacingAfter="0"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{area}]]></textFieldExpression>
 			</textField>
@@ -281,14 +283,15 @@ order by ord]]>
 		<band height="26">
 			<textField isBlankWhenNull="true">
 				<reportElement x="454" y="0" width="100" height="20" uuid="2ffe17fd-e30f-4bbd-92d6-43165096a86b"/>
-				<box leftPadding="7">
+				<box leftPadding="7" rightPadding="7">
 					<topPen lineWidth="0.6"/>
 					<leftPen lineWidth="0.6"/>
 					<bottomPen lineWidth="0.6"/>
 					<rightPen lineWidth="0.6"/>
 				</box>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="12" isBold="true" isItalic="true"/>
+					<paragraph rightIndent="3" spacingAfter="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
 			</textField>
@@ -307,14 +310,15 @@ order by ord]]>
 			</textField>
 			<textField pattern="" isBlankWhenNull="true">
 				<reportElement x="330" y="0" width="124" height="20" uuid="db778c77-4a97-4038-babd-1ae5e538a91c"/>
-				<box leftPadding="7">
+				<box leftPadding="7" rightPadding="7">
 					<topPen lineWidth="0.6"/>
 					<leftPen lineWidth="0.6"/>
 					<bottomPen lineWidth="0.6"/>
 					<rightPen lineWidth="0.6"/>
 				</box>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="12" isBold="true" isItalic="true"/>
+					<paragraph rightIndent="3" spacingAfter="0"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{area}]]></textFieldExpression>
 			</textField>
