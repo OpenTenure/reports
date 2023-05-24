@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
-<!-- 2017-08-30T15:12:36 -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Claim certificate" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20" resourceBundle="Bundle" uuid="985fe8fc-59be-4ab1-adfa-106164917efc">
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
-	<property name="ireport.jasperserver.url" value="http://localhost:8080/jasperserver/"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CS DB Docker"/>
+	<property name="ireport.jasperserver.url" value="http://localhost:8996/"/>
 	<property name="ireport.jasperserver.user" value="jasperadmin"/>
-	<property name="ireport.jasperserver.report.resource" value="/reports/Community_Server/ClaimCertificate_files/ClaimCertificate_"/>
-	<property name="ireport.jasperserver.reportUnit" value="/reports/Community_Server/ClaimCertificate"/>
+	<property name="ireport.jasperserver.report.resource" value="/cert/Claim_certificate_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/cert/Claim_certificate"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="cm"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="cm"/>
@@ -102,10 +101,10 @@ WHERE c.id = $P{id}]]>
 	</background>
 	<title>
 		<band height="101" splitType="Stretch">
-			<textField>
-				<reportElement x="150" y="16" width="410" height="32" uuid="1a837209-d209-41f6-bf41-500d3eea52a6"/>
-				<textElement>
-					<font size="24"/>
+			<textField textAdjust="ScaleFont">
+				<reportElement x="150" y="3" width="410" height="45" uuid="1a837209-d209-41f6-bf41-500d3eea52a6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Padauk" size="24"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{header}]]></textFieldExpression>
 			</textField>
@@ -118,10 +117,10 @@ WHERE c.id = $P{id}]]>
 				</reportElement>
 				<imageExpression><![CDATA["logo.png"]]></imageExpression>
 			</image>
-			<textField>
+			<textField textAdjust="ScaleFont">
 				<reportElement x="150" y="50" width="410" height="34" uuid="ab91210b-8387-471b-aef0-1115c96fb336"/>
 				<textElement>
-					<font size="20" isBold="true"/>
+					<font fontName="Padauk" size="20" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["#" + $F{nr}]]></textFieldExpression>
 			</textField>
@@ -146,82 +145,82 @@ WHERE c.id = $P{id}]]>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA["Shares.jasper"]]></subreportExpression>
 			</subreport>
-			<textField isStretchWithOverflow="true">
-				<reportElement x="7" y="10" width="523" height="20" uuid="175e13b0-380c-4085-922b-873860af648c"/>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="7" y="10" width="523" height="28" uuid="175e13b0-380c-4085-922b-873860af648c"/>
 				<textElement>
-					<font fontName="SansSerif" size="14"/>
+					<font fontName="Padauk" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[String.format($R{text1},$P{communityName})]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="20" y="38" width="180" height="18" uuid="39ae948f-714b-42a9-ad8e-90f526ed127a"/>
+			<textField textAdjust="StretchHeight">
+				<reportElement positionType="Float" x="20" y="38" width="180" height="22" uuid="39ae948f-714b-42a9-ad8e-90f526ed127a"/>
 				<textElement>
-					<font fontName="SansSerif" size="14" isBold="true"/>
+					<font fontName="Padauk" size="14" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{land_name}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="20" y="60" width="180" height="18" uuid="9fcf31cd-a82e-4fb8-9d2c-c89cbde5a235"/>
+			<textField textAdjust="StretchHeight">
+				<reportElement positionType="Float" x="20" y="60" width="180" height="22" uuid="9fcf31cd-a82e-4fb8-9d2c-c89cbde5a235"/>
 				<textElement>
-					<font fontName="SansSerif" size="14" isBold="true"/>
+					<font fontName="Padauk" size="14" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{tenure_right}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="20" y="82" width="180" height="18" uuid="eca44d2c-f830-4e42-bc47-aa43db6ce8fb"/>
+			<textField textAdjust="StretchHeight">
+				<reportElement positionType="Float" x="20" y="82" width="180" height="22" uuid="eca44d2c-f830-4e42-bc47-aa43db6ce8fb"/>
 				<textElement>
-					<font fontName="SansSerif" size="14" isBold="true"/>
+					<font fontName="Padauk" size="14" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{land_use}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="20" y="104" width="180" height="18" uuid="449acede-e6cd-46bc-8c1c-ce1f364af044">
+			<textField textAdjust="StretchHeight">
+				<reportElement positionType="Float" x="20" y="104" width="180" height="26" uuid="449acede-e6cd-46bc-8c1c-ce1f364af044">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font fontName="SansSerif" size="14" isBold="true"/>
+					<font fontName="Padauk" size="14" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{held_since}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="210" y="38" width="320" height="17" uuid="311b0f35-78d6-4d58-8958-ceafcf4cd389"/>
+			<textField textAdjust="StretchHeight">
+				<reportElement positionType="Float" x="210" y="38" width="320" height="22" uuid="311b0f35-78d6-4d58-8958-ceafcf4cd389"/>
 				<textElement>
-					<font fontName="SansSerif" size="12" isBold="false"/>
+					<font fontName="Padauk" size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[T($F{description})]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="7" y="133" width="523" height="20" uuid="6f8d9d3c-a437-4bd4-a468-f73fc5a03874"/>
+			<textField textAdjust="StretchHeight">
+				<reportElement positionType="Float" x="7" y="130" width="523" height="23" uuid="6f8d9d3c-a437-4bd4-a468-f73fc5a03874"/>
 				<textElement>
-					<font fontName="SansSerif" size="14"/>
+					<font fontName="Padauk" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{text2}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="210" y="60" width="320" height="17" uuid="40909b2e-3cae-453a-848e-f3c1aee7bbc9"/>
+			<textField textAdjust="StretchHeight">
+				<reportElement positionType="Float" x="210" y="60" width="320" height="22" uuid="40909b2e-3cae-453a-848e-f3c1aee7bbc9"/>
 				<textElement>
-					<font fontName="SansSerif" size="12" isBold="false"/>
+					<font fontName="Padauk" size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[T($F{type_name})]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="210" y="82" width="320" height="17" uuid="f2befa5e-4d7b-43ad-842e-59b18d073207"/>
+			<textField textAdjust="StretchHeight">
+				<reportElement positionType="Float" x="210" y="82" width="320" height="22" uuid="f2befa5e-4d7b-43ad-842e-59b18d073207"/>
 				<textElement>
-					<font fontName="SansSerif" size="12" isBold="false"/>
+					<font fontName="Padauk" size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[T($F{landuse_name})]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" pattern="MMMM d, yyyy">
-				<reportElement positionType="Float" x="210" y="104" width="320" height="17" uuid="b5a89a10-b560-4f91-a969-1bf335fde8de"/>
+			<textField textAdjust="StretchHeight" pattern="MMMM d, yyyy">
+				<reportElement positionType="Float" x="210" y="104" width="320" height="26" uuid="b5a89a10-b560-4f91-a969-1bf335fde8de"/>
 				<textElement>
-					<font fontName="SansSerif" size="12" isBold="false"/>
+					<font fontName="Padauk" size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[($F{lodgement_date} == null ? "" : $F{lodgement_date})]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField textAdjust="StretchHeight">
 				<reportElement positionType="Float" x="7" y="209" width="180" height="20" uuid="5892ce63-6207-428f-bcc7-d5bbe7726532"/>
 				<textElement>
-					<font fontName="SansSerif" size="12" isBold="true"/>
+					<font fontName="Padauk" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{land_plan}]]></textFieldExpression>
 			</textField>
@@ -245,10 +244,10 @@ WHERE c.id = $P{id}]]>
 			<line>
 				<reportElement x="5" y="58" width="530" height="1" uuid="1c478a6b-bea3-4192-8ac0-e25563cbf388"/>
 			</line>
-			<textField isStretchWithOverflow="true">
+			<textField textAdjust="StretchHeight">
 				<reportElement positionType="Float" x="5" y="38" width="155" height="20" uuid="8b3d2e2c-c74d-462d-9b49-d807d2a422f0"/>
 				<textElement>
-					<font fontName="SansSerif" size="12" isBold="false"/>
+					<font fontName="Padauk" size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{date}]]></textFieldExpression>
 			</textField>
@@ -258,10 +257,10 @@ WHERE c.id = $P{id}]]>
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
-			<textField isStretchWithOverflow="true">
+			<textField textAdjust="StretchHeight">
 				<reportElement positionType="Float" x="5" y="8" width="155" height="21" uuid="b0666809-4460-4470-a402-22542e114f93"/>
 				<textElement>
-					<font fontName="SansSerif" size="12" isBold="false"/>
+					<font fontName="Padauk" size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{community_head}]]></textFieldExpression>
 			</textField>

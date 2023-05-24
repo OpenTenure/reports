@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
-<!-- 2017-08-26T22:46:53 -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PublicDisplayClaimsListByName" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" resourceBundle="Bundle" uuid="4eedbb89-b4f6-4469-9ab6-f642a1688cf7">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SOLA_DA"/>
-	<property name="ireport.jasperserver.url" value="http://localhost:8080/jasperserver/"/>
+	<property name="ireport.jasperserver.url" value="http://localhost:8081/jasperserver/"/>
 	<property name="ireport.jasperserver.user" value="jasperadmin"/>
-	<property name="ireport.jasperserver.report.resource" value="/reports/Community_Server/Public_Display_Listing_by_Name_files/Public_Display_Listing_by_Name_"/>
-	<property name="ireport.jasperserver.reportUnit" value="/reports/Community_Server/Public_Display_Listing_by_Name"/>
+	<property name="ireport.jasperserver.report.resource" value="/reports/community_server/Claims_List_By_Claimant_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/reports/community_server/Claims_List_By_Claimant"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
@@ -102,22 +101,24 @@ order by p.name, p.last_name]]>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 			</line>
-			<textField pattern="dd MMMMM yyyy">
+			<textField textAdjust="ScaleFont" pattern="dd MMMMM yyyy">
 				<reportElement x="686" y="36" width="114" height="20" uuid="bb10dbe1-0a4f-4722-9953-c163b63cf979"/>
-				<textElement verticalAlignment="Middle"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Padauk"/>
+				</textElement>
 				<textFieldExpression><![CDATA[NOW( )]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField textAdjust="ScaleFont">
 				<reportElement x="0" y="0" width="800" height="29" uuid="bb64a58b-9d57-43fc-8abd-0439ce5baf39"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="19"/>
+					<font fontName="Padauk" size="19"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{title}]]></textFieldExpression>
 			</textField>
-			<textField pattern="">
+			<textField textAdjust="ScaleFont" pattern="">
 				<reportElement x="636" y="36" width="50" height="20" uuid="f2370501-8f04-4734-ab5b-15a855b05a8f"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font fontName="Padauk" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{date} + ":"]]></textFieldExpression>
 			</textField>
@@ -126,7 +127,7 @@ order by p.name, p.last_name]]>
 	<columnHeader>
 		<band height="38">
 			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-			<textField pattern="">
+			<textField textAdjust="ScaleFont" pattern="">
 				<reportElement mode="Opaque" x="420" y="15" width="60" height="23" backcolor="#E0E0E0" uuid="75a7930c-28f5-43fa-b574-991059bf277e"/>
 				<box leftPadding="3">
 					<topPen lineWidth="0.6"/>
@@ -135,11 +136,11 @@ order by p.name, p.last_name]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font size="12" isBold="true"/>
+					<font fontName="Padauk" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{area}]]></textFieldExpression>
 			</textField>
-			<textField pattern="">
+			<textField textAdjust="ScaleFont" pattern="">
 				<reportElement mode="Opaque" x="0" y="15" width="90" height="23" backcolor="#E0E0E0" uuid="b7f393d7-6539-4e5a-aa31-2410bf90fc93"/>
 				<box leftPadding="3">
 					<topPen lineWidth="0.6"/>
@@ -148,11 +149,11 @@ order by p.name, p.last_name]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font size="12" isBold="true"/>
+					<font fontName="Padauk" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{number}]]></textFieldExpression>
 			</textField>
-			<textField pattern="">
+			<textField textAdjust="ScaleFont" pattern="">
 				<reportElement mode="Opaque" x="90" y="15" width="170" height="23" backcolor="#E0E0E0" uuid="333742c1-6234-4406-a80d-7e6b818b0c48"/>
 				<box leftPadding="3">
 					<topPen lineWidth="0.6"/>
@@ -161,11 +162,11 @@ order by p.name, p.last_name]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font size="12" isBold="true"/>
+					<font fontName="Padauk" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{ClaimType}]]></textFieldExpression>
 			</textField>
-			<textField pattern="">
+			<textField textAdjust="ScaleFont" pattern="">
 				<reportElement mode="Opaque" x="260" y="15" width="160" height="23" backcolor="#E0E0E0" uuid="661150a8-d1ed-4e0f-bf40-25cc5b0c2f81"/>
 				<box leftPadding="3">
 					<topPen lineWidth="0.6"/>
@@ -174,11 +175,11 @@ order by p.name, p.last_name]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font size="12" isBold="true"/>
+					<font fontName="Padauk" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{LandUse}]]></textFieldExpression>
 			</textField>
-			<textField pattern="">
+			<textField textAdjust="ScaleFont" pattern="">
 				<reportElement mode="Opaque" x="480" y="15" width="170" height="23" backcolor="#E0E0E0" uuid="fabd9bd9-455d-4d1b-8463-f3d264901366"/>
 				<box leftPadding="3">
 					<topPen lineWidth="0.6"/>
@@ -187,11 +188,11 @@ order by p.name, p.last_name]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font size="12" isBold="true"/>
+					<font fontName="Padauk" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{owners}]]></textFieldExpression>
 			</textField>
-			<textField pattern="">
+			<textField textAdjust="ScaleFont" pattern="">
 				<reportElement mode="Opaque" x="650" y="15" width="150" height="23" backcolor="#E0E0E0" uuid="28a80542-3ee5-4d8c-b60f-2c39f76104d6"/>
 				<box leftPadding="3">
 					<topPen lineWidth="0.6"/>
@@ -200,7 +201,7 @@ order by p.name, p.last_name]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font size="12" isBold="true"/>
+					<font fontName="Padauk" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{recorder}]]></textFieldExpression>
 			</textField>
@@ -208,7 +209,7 @@ order by p.name, p.last_name]]>
 	</columnHeader>
 	<detail>
 		<band height="26">
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="90" height="26" uuid="3f1d3869-24d8-4163-a9b5-1ede862242e4"/>
 				<box leftPadding="3">
 					<topPen lineWidth="0.6"/>
@@ -217,11 +218,11 @@ order by p.name, p.last_name]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font size="12"/>
+					<font fontName="Padauk" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nr}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="420" y="0" width="60" height="26" uuid="ff41c4c8-2596-4a55-8112-32b4d27df135"/>
 				<box leftPadding="7">
 					<topPen lineWidth="0.6"/>
@@ -230,11 +231,11 @@ order by p.name, p.last_name]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font size="12"/>
+					<font fontName="Padauk" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{claim_area}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="90" y="0" width="170" height="26" uuid="6a874564-3663-4f44-b502-c3233fdeaa2c"/>
 				<box leftPadding="3">
 					<topPen lineWidth="0.6"/>
@@ -243,11 +244,11 @@ order by p.name, p.last_name]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font size="12"/>
+					<font fontName="Padauk" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{claim_type}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="260" y="0" width="160" height="26" uuid="f48f9fdb-9b72-48a1-a5e6-501fc8d10f76"/>
 				<box leftPadding="3">
 					<topPen lineWidth="0.6"/>
@@ -256,11 +257,11 @@ order by p.name, p.last_name]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font size="12"/>
+					<font fontName="Padauk" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{land_use}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="480" y="0" width="170" height="26" uuid="510a8fe9-2f30-4ae5-b6e0-74226e406dec"/>
 				<box leftPadding="7">
 					<topPen lineWidth="0.6"/>
@@ -269,11 +270,11 @@ order by p.name, p.last_name]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font size="12"/>
+					<font fontName="Padauk" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{owners}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="650" y="0" width="150" height="26" uuid="bec9aec2-1fb0-419a-be7f-e5ce32ec5630"/>
 				<box leftPadding="7">
 					<topPen lineWidth="0.6"/>
@@ -282,7 +283,7 @@ order by p.name, p.last_name]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font size="12"/>
+					<font fontName="Padauk" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{recorder}]]></textFieldExpression>
 			</textField>
