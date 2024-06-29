@@ -6,6 +6,8 @@
 	<property name="ireport.jasperserver.user" value="jasperadmin"/>
 	<property name="ireport.jasperserver.report.resource" value="/reports/community_server/Claims_By_Status_files/main_jrxml"/>
 	<property name="ireport.jasperserver.reportUnit" value="/reports/community_server/Claims_By_Status"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="264"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="729"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
@@ -64,11 +66,13 @@
 	<parameter name="lang" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["en-us"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="projectId" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select s.code, 
 get_translation(s.display_value, $P{lang}) as display_value, 
 count(1) as cnt
 from opentenure.claim c inner join opentenure.claim_status s on c.status_code = s.code
+where c.project_id = $P{projectId}
 group by s.code
 order by display_value]]>
 	</queryString>
@@ -90,21 +94,21 @@ order by display_value]]>
 			<textField textAdjust="ScaleFont" pattern="dd MMMMM yyyy">
 				<reportElement x="440" y="47" width="114" height="20" uuid="bb10dbe1-0a4f-4722-9953-c163b63cf979"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Padauk"/>
+					<font fontName="OpenTenure"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="ScaleFont">
 				<reportElement x="0" y="0" width="554" height="29" uuid="bb64a58b-9d57-43fc-8abd-0439ce5baf39"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Padauk" size="19"/>
+					<font fontName="DejaVu Sans" size="19"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{title}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="ScaleFont" pattern="">
 				<reportElement x="390" y="47" width="50" height="20" uuid="f2370501-8f04-4734-ab5b-15a855b05a8f"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Padauk" isBold="true"/>
+					<font fontName="DejaVu Sans" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{date} + ":"]]></textFieldExpression>
 			</textField>
@@ -122,7 +126,7 @@ order by display_value]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Padauk" size="12" isBold="true"/>
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{count}]]></textFieldExpression>
 			</textField>
@@ -135,7 +139,7 @@ order by display_value]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Padauk" size="12" isBold="true"/>
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{ClaimStatus}]]></textFieldExpression>
 			</textField>
@@ -152,7 +156,7 @@ order by display_value]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Padauk" size="12"/>
+					<font fontName="OpenTenure" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{display_value}]]></textFieldExpression>
 			</textField>
@@ -165,7 +169,7 @@ order by display_value]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Padauk" size="12"/>
+					<font fontName="DejaVu Sans" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cnt}]]></textFieldExpression>
 			</textField>
@@ -182,7 +186,7 @@ order by display_value]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Padauk" size="12" isBold="true" isItalic="true"/>
+					<font fontName="DejaVu Sans" size="12" isBold="true" isItalic="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
 			</textField>
@@ -195,7 +199,7 @@ order by display_value]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Padauk" size="12" isBold="true" isItalic="true"/>
+					<font fontName="DejaVu Sans" size="12" isBold="true" isItalic="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{total}]]></textFieldExpression>
 			</textField>

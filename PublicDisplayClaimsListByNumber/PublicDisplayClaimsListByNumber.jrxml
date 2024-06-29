@@ -73,6 +73,7 @@
 	<parameter name="lang" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["en-us"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="projectId" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select c.nr, get_translation(rt.display_value, $P{lang}) as claim_type, get_translation(l.display_value, $P{lang}) as land_use, c.claim_area,
 (select string_agg(coalesce(p.name, '') || ' ' || coalesce(p.last_name, ''), ', ') 
@@ -84,7 +85,7 @@ from (((opentenure.claim c left join cadastre.land_use_type l on c.land_use_code
 left join system.appuser u on c.recorder_name = u.username) left join 
 (opentenure.claim_share sh inner join (opentenure.party_for_claim_share psh inner join opentenure.party p on psh.party_id = p.id) on sh.id = psh.claim_share_id) on c.id = sh.claim_id
 
-where c.status_code = 'unmoderated' and c.challenged_claim_id is null and challenge_expiry_date > now()
+where c.project_id = $P{projectId} and c.status_code = 'unmoderated' and c.challenged_claim_id is null and challenge_expiry_date > now()
 order by c.nr]]>
 	</queryString>
 	<field name="nr" class="java.lang.String"/>
@@ -104,21 +105,21 @@ order by c.nr]]>
 			<textField textAdjust="ScaleFont" pattern="dd MMMMM yyyy">
 				<reportElement x="686" y="36" width="114" height="20" uuid="bb10dbe1-0a4f-4722-9953-c163b63cf979"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Padauk"/>
+					<font fontName="OpenTenure"/>
 				</textElement>
-				<textFieldExpression><![CDATA[NOW( )]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="ScaleFont">
 				<reportElement x="0" y="0" width="800" height="29" uuid="bb64a58b-9d57-43fc-8abd-0439ce5baf39"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Padauk" size="19"/>
+					<font fontName="DejaVu Sans" size="19"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{title}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="ScaleFont" pattern="">
 				<reportElement x="636" y="36" width="50" height="20" uuid="f2370501-8f04-4734-ab5b-15a855b05a8f"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Padauk" isBold="true"/>
+					<font fontName="DejaVu Sans" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{date} + ":"]]></textFieldExpression>
 			</textField>
@@ -136,7 +137,7 @@ order by c.nr]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Padauk" size="12" isBold="true"/>
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{area}]]></textFieldExpression>
 			</textField>
@@ -149,7 +150,7 @@ order by c.nr]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Padauk" size="12" isBold="true"/>
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{number}]]></textFieldExpression>
 			</textField>
@@ -162,7 +163,7 @@ order by c.nr]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Padauk" size="12" isBold="true"/>
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{ClaimType}]]></textFieldExpression>
 			</textField>
@@ -175,7 +176,7 @@ order by c.nr]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Padauk" size="12" isBold="true"/>
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{LandUse}]]></textFieldExpression>
 			</textField>
@@ -188,7 +189,7 @@ order by c.nr]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Padauk" size="12" isBold="true"/>
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{owners}]]></textFieldExpression>
 			</textField>
@@ -201,7 +202,7 @@ order by c.nr]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Padauk" size="12" isBold="true"/>
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{recorder}]]></textFieldExpression>
 			</textField>
@@ -218,7 +219,7 @@ order by c.nr]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Padauk" size="12"/>
+					<font fontName="DejaVu Sans" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nr}]]></textFieldExpression>
 			</textField>
@@ -231,7 +232,7 @@ order by c.nr]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Padauk" size="12"/>
+					<font fontName="DejaVu Sans" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{claim_area}]]></textFieldExpression>
 			</textField>
@@ -244,7 +245,7 @@ order by c.nr]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Padauk" size="12"/>
+					<font fontName="OpenTenure" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{claim_type}]]></textFieldExpression>
 			</textField>
@@ -257,7 +258,7 @@ order by c.nr]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Padauk" size="12"/>
+					<font fontName="OpenTenure" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{land_use}]]></textFieldExpression>
 			</textField>
@@ -270,7 +271,7 @@ order by c.nr]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Padauk" size="12"/>
+					<font fontName="DejaVu Sans" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{owners}]]></textFieldExpression>
 			</textField>
@@ -283,7 +284,7 @@ order by c.nr]]>
 					<rightPen lineWidth="0.6"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Padauk" size="12"/>
+					<font fontName="DejaVu Sans" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{recorder}]]></textFieldExpression>
 			</textField>
